@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TemenCAD — code-driven CAD for 3D printing</title>
+    <meta name="description" content="TemenCAD is a free, browser-based CAD where a short JavaScript script is the model. Watertight geometry, an AI assistant, shared shapes, and print-ready STL and 3MF export." />
+    <meta property="og:title" content="TemenCAD — code-driven CAD for 3D printing" />
+    <meta property="og:description" content="Describe parts in code. Print them. A free, browser-based CAD built on the Manifold kernel, with an assistant and a shared-shape catalogue." />
+    <meta property="og:image" content="https://belteshazzar.github.io/TemenCAD-web/og.png" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b6fcf'/%3E%3Cpath d='M8 11h16M16 11v12' stroke='%23fff' stroke-width='3.2' stroke-linecap='round'/%3E%3C/svg%3E" />
+  </head>
+  <body>
+    <header class="nav">
+      <a class="brand" href="#top" aria-label="TemenCAD">
+        <svg viewBox="0 0 32 32" width="26" height="26" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#0b6fcf"/><path d="M8 11h16M16 11v12" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/></svg>
+        <span>TemenCAD</span>
+      </a>
+      <nav>
+        <a href="#features">Features</a>
+        <a href="#catalogue">Catalogue</a>
+        <a href="#start">Get started</a>
+        <a href="https://belteshazzar.github.io/TemenCAD/api.html" target="_blank" rel="noopener">API</a>
+        <a href="https://github.com/belteshazzar/TemenCAD" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+      <a class="btn primary" href="https://belteshazzar.github.io/TemenCAD/">Open the app</a>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-text">
+          <p class="eyebrow">Free · open source · runs in your browser</p>
+          <h1>Describe parts in code.<br />Print them.</h1>
+          <p class="lead">TemenCAD is a CAD for 3D printing where a short JavaScript script <em>is</em> the model. Change a number, the part rebuilds. Every result is a watertight solid, ready for your slicer.</p>
+          <div class="cta">
+            <a class="btn primary big" href="https://belteshazzar.github.io/TemenCAD/">Start modelling</a>
+            <a class="btn ghost big" href="#demo">See it build</a>
+          </div>
+          <p class="fine">No account, no install. Your projects stay in your browser or in a file you keep.</p>
+        </div>
+        <div class="hero-art" aria-hidden="true"><img src="hero.png" alt="" width="900" height="900" /></div>
+      </section>
+
+      <section id="demo" class="demo reveal">
+        <div class="demo-head">
+          <h2>Live, built by the real engine</h2>
+          <p class="muted">These are not videos. The same geometry kernel the app uses runs here, in this page, in a web worker.</p>
+        </div>
+        <div class="demo-panel">
+          <div class="demo-left">
+            <div class="demo-tabs" role="tablist"></div>
+            <pre class="demo-code"></pre>
+            <div class="demo-foot">
+              <span class="demo-status muted"></span>
+              <a class="demo-open btn small" href="https://belteshazzar.github.io/TemenCAD/" target="_blank" rel="noopener">Open in TemenCAD ↗</a>
+            </div>
+          </div>
+          <div class="demo-right"><canvas class="demo-canvas"></canvas></div>
+        </div>
+      </section>
+
+      <section class="temen reveal">
+        <blockquote>
+          <p><strong>Temen</strong> (Sumerian 𒋼, Akkadian <em>temennu</em>) is the Babylonian word for a building's foundation: the levelled platform and the pegs that fixed its outline on the ground before the first brick was laid. A few measured points, and everything else is built out from them.</p>
+          <p>That is what a TemenCAD script is.</p>
+        </blockquote>
+      </section>
+
+      <section id="features" class="features reveal">
+        <h2>Everything a printed part needs</h2>
+        <div class="grid">
+          <article class="card">
+            <div class="icon">{ }</div>
+            <h3>Code first, by design</h3>
+            <p>Primitives, 2D sketches with fillets and offsets, extrude, revolve, loft, roof, booleans, hulls, arrays and metric screw cutters. Plain JavaScript, with autocomplete and errors marked on the line.</p>
+          </article>
+          <article class="card">
+            <div class="icon">◈</div>
+            <h3>Always watertight</h3>
+            <p>Built on the <a href="https://github.com/elalish/manifold" target="_blank" rel="noopener">Manifold</a> kernel compiled to WebAssembly. Booleans are exact and fast, and every mesh you export is a closed solid your slicer will accept.</p>
+          </article>
+          <article class="card">
+            <div class="icon">✦</div>
+            <h3>An assistant that edits the script</h3>
+            <p>Describe a change in plain English. The assistant edits your files, builds them, reads the same errors you see and takes a screenshot to check. Your own API key, nothing proxied.</p>
+          </article>
+          <article class="card">
+            <div class="icon">⇄</div>
+            <h3>Projects and imports</h3>
+            <p>Split a design into modules with ordinary <code>import</code> and <code>export</code>. Bring in fonts and STL meshes the same way. Save it all as one <code>.temen</code> file.</p>
+          </article>
+          <article class="card">
+            <div class="icon">▣</div>
+            <h3>Print-ready output</h3>
+            <p>Pick your printer's plate and see at once whether the part fits. Export binary STL, or a 3MF with each part named and coloured for multi-material slicers.</p>
+          </article>
+          <article class="card">
+            <div class="icon">&gt;_</div>
+            <h3>Headless, too</h3>
+            <p>The same engine runs in Node. <code>npx temencad model.js</code> builds a script or a <code>.temen</code> project to STL or 3MF in CI, with the plate check as an exit code.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="api reveal">
+        <div class="api-text">
+          <h2>A small API that reads like the part</h2>
+          <p>Units are millimetres, Y is up, the build plate is y = 0. Every operation returns a new shape, nothing is mutated, and anything you return or <code>show()</code> becomes a named part.</p>
+          <a class="btn ghost" href="https://belteshazzar.github.io/TemenCAD/api.html" target="_blank" rel="noopener">Read the API reference</a>
+        </div>
+<pre class="api-code"><span class="c">// a lid that fits the box it came from</span>
+<span class="k">const</span> body = <span class="f">roundedBox</span>(<span class="n">60</span>, <span class="n">25</span>, <span class="n">40</span>, <span class="n">3</span>, { edges: <span class="s">'vertical'</span> }).<span class="f">onPlate</span>()
+  .<span class="f">subtract</span>(<span class="f">roundedBox</span>(<span class="n">56</span>, <span class="n">25</span>, <span class="n">36</span>, <span class="n">1</span>).<span class="f">onPlate</span>().<span class="f">translate</span>(<span class="n">0</span>, <span class="n">2</span>, <span class="n">0</span>));
+<span class="k">const</span> lid = <span class="f">projection</span>(body).<span class="f">extrude</span>(<span class="n">2</span>)
+  .<span class="f">add</span>(<span class="f">projection</span>(body, { cut: <span class="n">10</span> }).<span class="f">offset</span>(-<span class="n">0.25</span>).<span class="f">extrude</span>(<span class="n">3</span>).<span class="f">translate</span>(<span class="n">0</span>, <span class="n">2</span>, <span class="n">0</span>));
+<span class="k">return</span> { body, lid: lid.<span class="f">translate</span>(<span class="n">0</span>, <span class="n">0</span>, <span class="n">50</span>) };</pre>
+      </section>
+
+      <section id="catalogue" class="catalogue reveal">
+        <div class="section-head">
+          <h2>Start from a shared shape</h2>
+          <p class="muted">Hinges, clips, knobs, boxes. Parametric, reviewed, and copied into your project so they stay yours. Share your own from the app in one dialog.</p>
+        </div>
+        <div id="catalog-grid" class="grid shapes"><p class="muted">Loading the catalogue…</p></div>
+        <p class="center"><a class="btn ghost" href="https://belteshazzar.github.io/TemenCAD-catalog/" target="_blank" rel="noopener">Browse the catalogue</a></p>
+      </section>
+
+      <section id="start" class="start reveal">
+        <h2>Get started in a minute</h2>
+        <ol class="steps">
+          <li><span class="num">1</span><div><h3>Open the app</h3><p>It loads a demo script that shows every feature. Edit a number and watch it rebuild.</p></div></li>
+          <li><span class="num">2</span><div><h3>Write your part</h3><p>Autocomplete knows every function. The Assistant tab can write it with you.</p></div></li>
+          <li><span class="num">3</span><div><h3>Export and print</h3><p>Choose your plate, check the fit, export STL or 3MF, slice as usual.</p></div></li>
+        </ol>
+        <div class="cta center">
+          <a class="btn primary big" href="https://belteshazzar.github.io/TemenCAD/">Open TemenCAD</a>
+        </div>
+        <pre class="cli"><span class="c"># or from a terminal</span>
+npx temencad model.js -o model.3mf --plate prusa-mk4
+npx temencad add parametric-hinge</pre>
+      </section>
+    </main>
+
+    <footer>
+      <p>TemenCAD is open source under the BSD 2-Clause license. Built on Manifold, Three.js, CodeMirror and opentype.js. © <span id="year"></span> Daniel Walton.</p>
+      <p><a href="https://github.com/belteshazzar/TemenCAD" target="_blank" rel="noopener">App</a> · <a href="https://github.com/belteshazzar/TemenCAD-catalog" target="_blank" rel="noopener">Catalogue</a> · <a href="https://github.com/belteshazzar/TemenCAD-web" target="_blank" rel="noopener">This site</a></p>
+    </footer>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
