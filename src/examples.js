@@ -33,6 +33,16 @@ const letters = text3d('TEMEN', { size: 11, height: 1.5, align: 'center', font: 
 return { tag: tag.color('#ffd27f'), letters: letters.color('#2b2b2b') };`,
   },
   {
+    id: 'hook',
+    label: 'Hook',
+    code: `// A wall hook: a rounded profile swept along a smooth path, on a screw plate
+const plate = roundedBox(24, 4, 30, 4, { edges: 'vertical' }).onPlate()
+  .subtract(screwHole('M4', 4, { type: 'countersunk' }).translate(0, 4, -9));
+const curve = path([[0, 2, 8], [0, 2, 24], [0, 8, 30], [0, 16, 26], [0, 18, 18]]).smooth();
+const arm = sweep(roundedRect(8, 4, 1.5), curve, { frame: 'upright' });
+return plate.add(arm).name('hook').color('#c2e86b');`,
+  },
+  {
     id: 'vase',
     label: 'Vase',
     code: `// A twisted vase: a hexagon extruded with twist and scale, hollowed by a smaller twin
