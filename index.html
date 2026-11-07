@@ -136,7 +136,7 @@ npx temencad camera-plate.js -o plate.stl --png sheet.png --views iso,top,front,
 <span class="c"># cut it open to inspect the holes and the cable slot</span>
 npx temencad camera-plate.js --png cut.png --section z=9.5 --views iso,right</pre>
 <pre class="api-code"><span class="c">// and let the build itself check the fit</span>
-<span class="k">const</span> camera = <span class="f">box</span>(<span class="n">25</span>, <span class="n">1.12</span>, <span class="n">23.86</span>).<span class="f">translate</span>(<span class="n">0</span>, <span class="n">7</span>, <span class="n">0</span>);
+<span class="k">const</span> camera = <span class="f">box</span>(<span class="n">25</span>, <span class="n">1.12</span>, <span class="n">23.86</span>).<span class="f">placeOn</span>(risers, <span class="s">'top'</span>);
 <span class="f">show</span>(camera, { ghost: <span class="k">true</span> });
 <span class="f">assert</span>(<span class="f">clearance</span>(plate, camera) &gt;= <span class="n">0.5</span>, <span class="s">'camera binds on the risers'</span>);
 <span class="f">assert</span>(!<span class="f">intersects</span>(cableSlot, risers));</pre>
