@@ -22,6 +22,7 @@
       </a>
       <nav>
         <a href="#features">Features</a>
+        <a href="#check">Checking</a>
         <a href="#catalogue">Catalogue</a>
         <a href="#start">Get started</a>
         <a href="https://belteshazzar.github.io/TemenCAD/api.html" target="_blank" rel="noopener">API</a>
@@ -101,7 +102,7 @@
           <article class="card">
             <div class="icon">&gt;_</div>
             <h3>Headless, too</h3>
-            <p>The same engine runs in Node. <code>npx temencad model.js</code> builds a script or a <code>.temen</code> project to STL or 3MF in CI, with the plate check as an exit code.</p>
+            <p>The same engine runs in Node. <code>npx temencad model.js</code> builds a script or a <code>.temen</code> project to STL or 3MF in CI, renders labelled views to check, and reports the plate fit as an exit code.</p>
           </article>
         </div>
       </section>
@@ -118,6 +119,29 @@
 <span class="k">const</span> lid = <span class="f">projection</span>(body).<span class="f">extrude</span>(<span class="n">2</span>)
   .<span class="f">add</span>(<span class="f">projection</span>(body, { cut: <span class="n">10</span> }).<span class="f">offset</span>(-<span class="n">0.25</span>).<span class="f">extrude</span>(<span class="n">3</span>).<span class="f">translate</span>(<span class="n">0</span>, <span class="n">2</span>, <span class="n">0</span>));
 <span class="k">return</span> { body, lid: lid.<span class="f">translate</span>(<span class="n">0</span>, <span class="n">0</span>, <span class="n">50</span>) };</pre>
+      </section>
+
+      <section id="check" class="check reveal">
+        <div class="section-head">
+          <h2>Check it before you print it</h2>
+          <p class="muted">One command builds a script, exports it, and renders labelled views: part names, sizes, a scale bar, axes. Reference parts you model as ghosts are drawn translucent, so you can see the thing you are designing around. Cut the model open with a section to look inside.</p>
+        </div>
+        <figure class="sheet">
+          <a href="camera-sheet.png" target="_blank" rel="noopener"><img src="camera-sheet.png" alt="Four labelled views of a Raspberry Pi camera backing plate, with the camera board shown as a translucent ghost on its risers" width="1440" height="1080" loading="lazy" /></a>
+          <figcaption>A backing plate for a Raspberry Pi camera module, designed from the official drawing. The green ghost is the camera board, its lens and its connector, never exported, there to prove the fit.</figcaption>
+        </figure>
+        <div class="check-cols">
+<pre class="api-code"><span class="c"># build, export, and render a sheet of views</span>
+npx temencad camera-plate.js -o plate.stl --png sheet.png --views iso,top,front,right
+<span class="c"># cut it open to inspect the holes and the cable slot</span>
+npx temencad camera-plate.js --png cut.png --section z=9.5 --views iso,right</pre>
+<pre class="api-code"><span class="c">// and let the build itself check the fit</span>
+<span class="k">const</span> camera = <span class="f">box</span>(<span class="n">25</span>, <span class="n">1.12</span>, <span class="n">23.86</span>).<span class="f">translate</span>(<span class="n">0</span>, <span class="n">7</span>, <span class="n">0</span>);
+<span class="f">show</span>(camera, { ghost: <span class="k">true</span> });
+<span class="f">assert</span>(<span class="f">clearance</span>(plate, camera) &gt;= <span class="n">0.5</span>, <span class="s">'camera binds on the risers'</span>);
+<span class="f">assert</span>(!<span class="f">intersects</span>(cableSlot, risers));</pre>
+        </div>
+        <p class="check-note muted">The same picture and the same checks are what the Assistant and command-line agents use to see their own work, so a design can be written, built and verified without a screen. <a href="https://belteshazzar.github.io/TemenCAD/api.txt">The API as plain text</a> and <a href="https://github.com/belteshazzar/TemenCAD/blob/main/AGENTS.md">AGENTS.md</a> are there for them.</p>
       </section>
 
       <section id="catalogue" class="catalogue reveal">
